@@ -50,9 +50,20 @@
 	
 		// 添加地图瓦片层
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			attribution: '© OpenStreetMap 贡献者'
+			attribution: '© OpenStreetMap contributors',
+			noWrap: true
 		}).addTo(map);
 	
+    // 示例经纬度（西雅图华盛顿大学）
+    var latitude = 47.6553;      // 纬度
+    var longitude = -122.3035;   // 经度
+
+    // 更新地图视图到指定位置和缩放级别
+    map.setView([latitude, longitude], 15);
+
+    // 添加标记到地图上
+    var marker = L.marker([latitude, longitude]).addTo(map);
+    marker.bindPopup("自行车当前位置：西雅图华盛顿大学").openPopup();
 		// 如果有实际的位置信息，可以在这里添加标记
 		// var marker = L.marker([latitude, longitude]).addTo(map);
 		// marker.bindPopup("自行车当前位置").openPopup();
