@@ -8601,3 +8601,9 @@ input, select, textarea {
 			#wrapper.divided > .invert:first-child {
 				box-shadow: none !important;
 			}
+
+		#map {
+			width: 100%;
+			height: 100%;
+			}
+			
