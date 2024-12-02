@@ -14,6 +14,19 @@
     <!-- 您的自定义样式 -->
     <link rel="stylesheet" href="assets/css/main.css" />
     <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+    <!-- 添加自定义样式，用于标记编号 -->
+    <style>
+        .number-icon {
+            background-color: #2A81CB;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-weight: bold;
+            line-height: 30px;
+            width: 30px;
+            height: 30px;
+        }
+    </style>
 </head>
 <body class="is-preload">
 
@@ -92,13 +105,21 @@
                         window.markers = [];
                         const coordinates = [];
 
-                        data.forEach(location => {
+                        data.forEach((location, index) => {
                             const { latitude, longitude, timestamp } = location;
                             const latlng = [latitude, longitude];
                             coordinates.push(latlng);
 
+                            // 创建编号的标记
+                            const number = index + 1; // 编号从 1 开始
+                            const numberIcon = L.divIcon({
+                                html: `<div class="number-icon">${number}</div>`,
+                                iconSize: [30, 30],
+                                className: '' // 清除默认的样式
+                            });
+
                             // 创建标记并添加到地图
-                            const marker = L.marker(latlng).addTo(map);
+                            const marker = L.marker(latlng, { icon: numberIcon }).addTo(map);
                             marker.bindPopup(`Time: ${new Date(timestamp).toLocaleString()}`);
                             window.markers.push(marker);
                         });
