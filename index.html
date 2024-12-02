@@ -1,4 +1,9 @@
 <!DOCTYPE HTML>
+<!--
+    Story by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 <head>
     <title>Bikesoft for EZ-Alarm</title>
@@ -8,16 +13,36 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <!-- 您的自定义样式 -->
     <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
 </head>
-<body>
+<body class="is-preload">
 
-    <!-- 地图容器 -->
-    <div id="map" style="width: 100%; height: 100vh;"></div>
+    <!-- Wrapper -->
+    <div id="wrapper" class="divided">
 
-    <!-- 引入必要的脚本 -->
-    <!-- Leaflet JS -->
+        <!-- One -->
+        <section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right" style="height:500px">
+            <div class="content">
+                <h2>Bikesoft for EZ-Alarm</h2>
+                <p class="major">EZ-Alarm by <a href="https://carbajalaustin.wixsite.com/team-9-product-devel">Group 9</a>.</p>
+                <p class="major">Bikesoft for EZ-Alarm is a website that allows you to control your EZ-Alarm from any device. You can check the status of your alarm from anywhere in the world.</p>
+            </div>
+            <div id="map" style="width: 100%; height: 100%;"></div>
+        </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/jquery.scrolly.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- 引入 Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <!-- 您的自定义脚本 -->
     <script>
         // 初始化地图，并设置初始视图
         var map = L.map('map').setView([0, 0], 2);
@@ -33,7 +58,7 @@
         window.polyline = null;
         window.predictedMarker = null;
 
-        // 定义红色标记图标
+        // 定义红色标记图标（用于预测点）
         var redIcon = new L.Icon({
             iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
             shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
@@ -46,7 +71,7 @@
         // 定义更新位置的函数
         async function updateLocation() {
             try {
-                const response = await fetch('https://bikesoft-backend.onrender.com/location'); // 替换为您的后端服务器 URL
+                const response = await fetch('https://bikesoft-backend.onrender.com/location'); // 确保替换为您的后端服务器 URL
                 if (response.ok) {
                     const result = await response.json();
                     const data = result.locations;
