@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <!-- 您的自定义样式 -->
     <link rel="stylesheet" href="assets/css/main.css" />
-    <noscript><link rel="stylesheet" href="assets/css/noscript.css" />
-    </noscript>
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
 <body class="is-preload">
 
@@ -115,7 +114,11 @@
                         }
 
                         // 调整地图视野以适应所有标记
-                        const group = new L.featureGroup([...window.markers, window.predictedMarker]);
+                        const allMarkers = [...window.markers];
+                        if (window.predictedMarker) {
+                            allMarkers.push(window.predictedMarker);
+                        }
+                        const group = new L.featureGroup(allMarkers);
                         map.fitBounds(group.getBounds());
                     } else {
                         console.error('No location data available.');
