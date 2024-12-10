@@ -2,7 +2,12 @@
 
 This is a wewbsite for team 9 prototype in EE542 embedded system capstone.
 
+This is not our self-designed UI page.
+
+We used this tempelete to create our website.
+
 Page: https://zijuncui02.github.io/bikesoft/
+
 
 
 Story by HTML5 UP
